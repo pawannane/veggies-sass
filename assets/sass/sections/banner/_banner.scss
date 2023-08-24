@@ -1,0 +1,77 @@
+.banner-section {
+  position: relative;
+  
+  & .main-heading {
+    width: 30%;
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    color: map-get($map: $colors, $key: black);
+    font-size: 36px;
+    line-height: 1.2;
+    text-align: center;
+    
+    &::after {
+      content: '';
+      width: 50%;
+      padding-bottom: 30px;
+      border-bottom: 1px solid map-get($map: $colors, $key: black);
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  &__dropdown-btn {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0;
+    transition: all .4s ease;
+
+    &::after {
+      content: "\f103";
+      padding: 15px;
+      border: 2px solid map-get($map: $colors, $key: pureWhite);
+      border-radius: 50%;
+      color: map-get($map: $colors, $key: pureWhite);
+      font-family: "FontAwesome";
+      font-size: 16px;
+    }
+  }
+
+  @at-root {
+    @include responsive-reverse(995px) {
+      &__dropdown-btn:hover::after { 
+        border: 2px solid map-get($map: $colors, $key: black);
+        color: map-get($map: $colors, $key: black); 
+      }
+    }
+
+    @include responsive(995px) {
+      & .main-heading { width: 45%; }
+    }
+
+    @include responsive(768px) {
+      & .main-heading { 
+        top: 30%;
+        font-size: 25px; 
+
+        &::after { padding-bottom: 15px; }
+      }
+    }
+
+    @include responsive(560px) {
+      & .main-heading { font-size: 20px; }
+
+      &__dropdown-btn::after { 
+        padding: 10px; 
+        font-size: 14px;
+      }
+    }
+
+    @include responsive(375px) {
+      & .main-heading { font-size: 16px; }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+.header-section {
+  width: 100%;
+  padding-top: 20px;
+  position: absolute;
+  z-index: 1;
+
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+    transition: transform .4s ease;
+
+    & li { 
+      margin-right: 1%; 
+      &:last-child { margin: 0; }
+
+      & a {
+        padding: 15px 10px;
+        color: map-get($map: $colors, $key: lightGray);
+        @include fontWeight;
+        text-transform: uppercase;
+      }
+    }
+
+  }
+
+  &__hamburger {
+    display: none;
+    cursor: pointer;
+
+    & .bar {
+      width: 25px;
+      height: 3px;
+      margin: 5px 0.5%;
+      display: block;
+      background-color: map-get($map: $colors, $key: backgroundGray);
+      text-indent: -9999px;
+      transition: all 0.4s ease;
+    }
+  }
+
+  @at-root {
+    @include responsive-reverse(995px) {
+      &__container a:hover { border: 1px solid map-get($map: $colors, $key: black); }
+    }
+
+    @include responsive(768px) {
+      .html-scroll { overflow-y: hidden; }
+      .header-section .active-nav { transform: translateY(0);}
+
+      &__hamburger {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: 15px;
+        right: 5%;
+      }
+  
+      &__hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+  
+      &__hamburger.active .bar:nth-child(1) {
+        -webkit-transform: translateY(8px) rotate(45deg);
+        -ms-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+      }
+  
+      &__hamburger.active .bar:nth-child(3) {
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        -ms-transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      &__container {
+        width: 100%;
+        padding: 20px 2%;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: map-get($colors, white);
+        transform: translateY(-100%);
+
+        &li { margin-bottom: 30px; }
+      }
+    }
+
+    @include responsive(480px) {
+      &__container a { font-size: 14px; }
+    }
+  }
+}

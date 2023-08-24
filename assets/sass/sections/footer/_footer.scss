@@ -1,0 +1,75 @@
+.footer-section {
+  position: relative;
+  bottom: 100px;
+  
+  &__container {
+    width: 100%;
+    padding: 30px 7.5%;
+    border-top: 1px solid #ebebeb;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+  }
+
+  &__copyright { color: map-get($map: $colors, $key: gray); }
+
+  &__link {
+    color: map-get($map: $colors, $key: green);
+    text-transform: capitalize;
+
+    &::before {
+      content: '\f004';
+      margin-right: 5px;
+      color: map-get($map: $colors, $key: red);
+      font-family: 'FontAwesome';
+    }
+  }
+
+  &__social-links {
+    display: flex;
+    align-items: center;
+    font-size: 0;
+
+    & a {
+      padding: 8px;
+      border: 1px solid map-get($map: $colors, $key: gray);
+      color: map-get($map: $colors, $key: gray);
+
+      &:first-child { margin-right: 5px; }
+
+      &::before {
+        font-family: 'FontAwesome';
+        font-size: 20px;
+      }
+    }
+    
+    & .facebook::before { content: '\f39e'; }
+    & .linkedin::before { content: '\f0e1'; }
+  }
+
+  @at-root {
+    @include responsive-reverse(995px) {
+      &__link:hover { color: map-get($map: $colors, $key: red); }
+
+      &__social-links a:hover { 
+        background-color: map-get($map: $colors, $key: lightBlack);
+        color: map-get($map: $colors, $key: white);
+      }
+    }
+
+    @include responsive(768px) {
+      &__container {
+        height: 100%;
+        padding: 20px 0;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &__social-links { margin-top: 10px; }
+    }
+
+    @include responsive(480px) {
+      &__copyright { font-size: 14px; }
+    }
+  }
+}

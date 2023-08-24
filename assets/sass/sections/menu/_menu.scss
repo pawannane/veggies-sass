@@ -1,0 +1,84 @@
+.menu-section {
+  padding: 85px 0;
+
+  &__tabs {
+    margin-top: 85px;
+    display: flex;
+    justify-content: center;
+
+    & li { margin-right: 2.5%;
+      &:last-child { margin-right: 0; }
+
+      & a {
+        color: map-get($map: $colors, $key: black);
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &__menu {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__menu-left {
+    flex: 0 0 48%;
+
+    & li { 
+      width: 100%;
+      margin-bottom: 60px;
+
+      &:last-child { margin-bottom: 0; }
+    }
+  }
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    color: map-get($map: $colors, $key: gray);
+    text-transform: uppercase;
+
+    & .price {
+      &::before {
+        content: '...';
+      }
+    }
+  }
+
+  &__info {
+    margin-top: 5px;
+    color: map-get($map: $colors, $key: gray);
+    font-size: 14px;
+  }
+
+  &__menu-right {
+    @extend .menu-section__menu-left;
+  }
+
+  @at-root {
+    @include responsive-reverse(995px) {
+      &__tabs a:hover { color: map-get($map: $colors, $key: pureBlack); }
+    }
+
+    @include responsive(768px) {
+      &__menu { flex-direction: column; }
+      &__menu-right { margin-bottom: 0; }
+
+      &__menu-left { 
+        margin-bottom: 40px; 
+        & li { margin-bottom: 30px; }
+      }
+
+    }
+
+    @include responsive(560px) {
+      .menu-section { padding: 50px 0; }
+      &__tabs, &__menu { margin-top: 40px; }
+    }
+
+    @include responsive(480px) {
+      &__tabs li a, &__heading { font-size: 14px; }
+    }
+  }
+}

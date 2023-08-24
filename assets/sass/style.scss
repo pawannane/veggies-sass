@@ -1,0 +1,11 @@
+@use "./common/colors";
+@import "./common/mixins";
+@import "./common/reset";
+@import "./sections/header/header";
+@import "./sections/banner/banner";
+@import "./sections/services/services";
+@import "./sections/specials/specials";
+@import "./sections/about/about";
+@import "./sections/menu/menu";
+@import "./sections/contact/contact";
+@import "./sections/footer/footer";

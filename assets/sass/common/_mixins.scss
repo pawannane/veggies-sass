@@ -1,0 +1,57 @@
+@import "./colors";
+
+.uppercase { text-transform: uppercase; }
+
+@mixin fontWeight {
+  font-weight: 600;
+}
+
+.price {
+  display: block;
+    color: map-get($map: $colors, $key: gray);
+    font-size: 14px;
+
+    &::after {
+      content: "\24";
+      font-family: "FontAwesome";
+    }
+}
+
+.section-heading {
+  color: map-get($map: $colors, $key: gray);
+  font-size: 40px;
+  @include fontWeight;
+  text-align: center;
+
+  &::after {
+    content: '';
+    width: 25%;
+    padding-bottom: 30px;
+    border-bottom: 1px solid map-get($map: $colors, $key: black);
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@mixin responsive($value) {
+  @media only screen and (max-width: $value) {
+    @content;
+  }
+}
+
+@mixin responsive-reverse($value) {
+  @media only screen and (min-width: $value) {
+    @content;
+  }
+}
+
+@include responsive(768px) {
+  .section-heading { 
+    font-size: 25px; 
+    &::after { padding-bottom: 15px; }
+  }
+}
+
+@include responsive(560px) {
+  .section-heading { font-size: 20px; }
+}

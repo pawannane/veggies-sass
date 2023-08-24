@@ -1,0 +1,126 @@
+%input {
+  width: 100%;
+  padding: 10px 5%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid map-get($map: $colors, $key: backgroundGray);
+  background-color: transparent;
+}
+
+.contact-section {
+  position: relative;
+
+  &__banner {
+    height: 160vh;
+    object-fit: cover;
+  }
+
+  &__container {
+    position: absolute;
+    top: 75px;
+    right: 5%;
+  }
+
+  &__info { 
+    margin-top: 80px;
+    display: flex; 
+    justify-content: space-between;
+  }
+
+  &__left { flex: 0 0 45%; }
+  &__right { @extend .contact-section__left; }
+
+  &__heading {
+    margin-bottom: 20px;
+    color: map-get($map: $colors, $key: gray);
+    font-size: 18px;
+    @include fontWeight;
+    text-transform: uppercase;
+  }
+
+  &__address {
+    color: map-get($map: $colors, $key: gray);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  &__mail, &__telephone { @extend .contact-section__address }
+  &__form { margin-top: 65px; }
+
+  &__input-field {
+    width: 45%;
+    display: inline-block;
+
+    & input { @extend %input; }
+  }
+
+  &__input-textarea textarea {
+    padding: 10px 2%;
+    @extend %input;
+    margin-top: 15px;
+  }
+
+  &__input-submit {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__submit-btn { 
+    padding: 18px 5.25%;
+    border: 1px solid map-get($map: $colors, $key: lightBlack);
+    background-color: transparent;
+    color: map-get($map: $colors, $key: lightBlack);
+    text-transform: capitalize;
+  }
+
+  @at-root {
+    @include responsive-reverse(995px) {
+      &__submit-btn:hover {
+        background-color: map-get($map: $colors, $key: lightBlack);
+        color: map-get($map: $colors, $key: white);
+      }
+    }
+
+    @include responsive(768px) {
+      &__banner { height: 150vh; }
+
+      &__container {
+        width: 60%;
+        top: 30px;
+        right: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    @include responsive(560px) {
+      &__container { 
+        width: 90%; 
+        text-align: center;
+      }
+
+      &__info { 
+        margin-top: 30px;
+        flex-direction: column; 
+      }
+
+      &__left { margin-bottom: 20px; }
+      &__right { margin: 0; }
+      &__telephone { display: block; }
+      &__form { margin-top: 30px; }
+
+      &__input-field {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      &__input-textarea textarea { margin: 0; }
+      &__input-submit { margin-top: 20px; }
+    }
+
+    @include responsive(480px) {
+      &__heading { font-size: 16px; }
+    }
+  }
+}
